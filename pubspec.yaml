@@ -1,5 +1,5 @@
 name: spotify
-description: "Projeto flutter para estudos"
+description: 'Projeto flutter para estudos'
 publish_to: 'none'
 version: 0.1.0
 
@@ -17,3 +17,22 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/fonts/
+    - assets/vectors/
+
+  fonts:
+    - family: Satoshi
+      fonts:
+        - asset: assets/fonts/Satoshi-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Satoshi-Bold.ttf
+          weight: 600
+        - asset: assets/fonts/Satoshi-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Satoshi-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Satoshi-Light.ttf
+          weight: 300

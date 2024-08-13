@@ -1,4 +1,4 @@
-package andershow.app.spotify
+package andershow.app.our_music
 
 import io.flutter.embedding.android.FlutterActivity
 

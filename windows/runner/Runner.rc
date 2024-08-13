@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "andershow.app" "\0"
-            VALUE "FileDescription", "spotify" "\0"
+            VALUE "FileDescription", "our_music" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "spotify" "\0"
+            VALUE "InternalName", "our_music" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 andershow.app. All rights reserved." "\0"
-            VALUE "OriginalFilename", "spotify.exe" "\0"
-            VALUE "ProductName", "spotify" "\0"
+            VALUE "OriginalFilename", "our_music.exe" "\0"
+            VALUE "ProductName", "our_music" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

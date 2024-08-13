@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:our_music/common/widgets/button/basic_app_button.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:our_music/core/configs/assets/app_images.dart';
-import 'package:our_music/core/configs/assets/app_vectors.dart';
+
+import '../../../common/widgets/button/basic_app_button.dart';
+import '../../../core/configs/assets/app_vectors.dart';
+import '../../choose_theme/page/choose_theme.dart';
 
 class GetStartedPage extends StatelessWidget {
   const GetStartedPage({super.key});
@@ -13,10 +15,6 @@ class GetStartedPage extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(
-              vertical: 52,
-              horizontal: 40,
-            ),
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
@@ -24,6 +22,15 @@ class GetStartedPage extends StatelessWidget {
                 ),
                 fit: BoxFit.cover,
               ),
+            ),
+          ),
+          Container(
+            color: Colors.black.withOpacity(0.35),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 52,
+              horizontal: 40,
             ),
             child: Column(
               children: [
@@ -57,14 +64,19 @@ class GetStartedPage extends StatelessWidget {
                   height: 20,
                 ),
                 BasicAppButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            const ChooseThemePage(),
+                      ),
+                    );
+                  },
                   title: "Get Started",
                 )
               ],
             ),
-          ),
-          Container(
-            color: Colors.black.withOpacity(0.15),
           ),
         ],
       ),

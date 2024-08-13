@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:spotify/core/configs/assets/app_vectors.dart';
+import 'package:our_music/core/configs/assets/app_vectors.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -11,6 +11,7 @@ class SplashPage extends StatelessWidget {
       body: Center(
         child: SvgPicture.asset(
           AppVectors.logo,
+          width: 196.0,
         ),
       ),
     );

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:our_music/core/configs/theme/app_colors.dart';
+import 'package:our_music/presentation/auth/pages/signin_or_signup.dart';
 
 import '../../../common/widgets/button/basic_app_button.dart';
 import '../../../core/configs/assets/app_images.dart';
@@ -164,7 +165,7 @@ class ChooseThemePage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (BuildContext context) =>
-                            const ChooseThemePage(),
+                            const SigninOrSignupPage(),
                       ),
                     );
                   },

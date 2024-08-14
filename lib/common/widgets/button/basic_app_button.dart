@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:our_music/core/configs/theme/app_colors.dart';
 
 class BasicAppButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String title;
+  final Color? backgroundColor;
+  final Color? textColor;
   final double? height;
 
   const BasicAppButton({
@@ -10,6 +13,8 @@ class BasicAppButton extends StatelessWidget {
     required this.onPressed,
     required this.title,
     this.height,
+    this.backgroundColor,
+    this.textColor,
   });
 
   @override
@@ -20,13 +25,13 @@ class BasicAppButton extends StatelessWidget {
         minimumSize: Size.fromHeight(
           height ?? 64,
         ),
+        backgroundColor: backgroundColor ?? AppColors.primary,
+        shadowColor: Colors.transparent,
       ),
       child: Text(
         title,
-        style: const TextStyle(
-          fontWeight: FontWeight.normal,
-          color: Colors.white,
-          fontSize: 22,
+        style: TextStyle(
+          color: textColor ?? Colors.white,
         ),
       ),
     );

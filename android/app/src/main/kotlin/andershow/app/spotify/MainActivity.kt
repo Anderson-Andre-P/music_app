@@ -1,4 +1,4 @@
-package andershow.app.our_music
+package com.andershow.our.music.app
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -6,6 +6,8 @@ import 'package:our_music/common/widgets/appBar/app_bar.dart';
 import 'package:our_music/common/widgets/button/basic_app_button.dart';
 import 'package:our_music/core/configs/assets/app_images.dart';
 import 'package:our_music/core/configs/assets/app_vectors.dart';
+import 'package:our_music/presentation/auth/pages/sign_in.dart';
+import 'package:our_music/presentation/auth/pages/sign_up.dart';
 
 class SigninOrSignupPage extends StatelessWidget {
   const SigninOrSignupPage({super.key});
@@ -85,7 +87,15 @@ class SigninOrSignupPage extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: BasicAppButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    const SignUpPage(),
+                              ),
+                            );
+                          },
                           title: "Register",
                         ),
                       ),
@@ -95,7 +105,15 @@ class SigninOrSignupPage extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: BasicAppButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    const SignInPage(),
+                              ),
+                            );
+                          },
                           title: "Sign In",
                           textColor:
                               context.isDarkMode ? Colors.white : Colors.black,

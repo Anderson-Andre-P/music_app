@@ -1,0 +1,121 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:our_music/common/widgets/appBar/app_bar.dart';
+import 'package:our_music/common/widgets/button/basic_app_button.dart';
+import 'package:our_music/core/configs/assets/app_vectors.dart';
+import 'package:our_music/core/configs/theme/app_colors.dart';
+import 'package:our_music/presentation/auth/pages/sign_up.dart';
+
+class SignInPage extends StatelessWidget {
+  const SignInPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: BasicAppBar(
+        title: SvgPicture.asset(
+          AppVectors.logo,
+          width: 148.0,
+        ),
+      ),
+      bottomNavigationBar: _signUpText(context),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 40.0,
+            vertical: 60.0,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              _registerText(),
+              const SizedBox(
+                height: 32.0,
+              ),
+              _emailField(context),
+              const SizedBox(
+                height: 32.0,
+              ),
+              _passwordField(context),
+              const SizedBox(
+                height: 32.0,
+              ),
+              BasicAppButton(
+                onPressed: () {},
+                title: "Enter",
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _registerText() {
+    return const Text(
+      'Sign In',
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 24.0,
+      ),
+      textAlign: TextAlign.center,
+    );
+  }
+
+  Widget _emailField(BuildContext context) {
+    return TextField(
+      cursorColor: AppColors.primary,
+      decoration: const InputDecoration(hintText: "Enter E-mail or Username")
+          .applyDefaults(
+        Theme.of(context).inputDecorationTheme,
+      ),
+    );
+  }
+
+  Widget _passwordField(BuildContext context) {
+    return TextField(
+      cursorColor: AppColors.primary,
+      decoration: const InputDecoration(hintText: "Password").applyDefaults(
+        Theme.of(context).inputDecorationTheme,
+      ),
+    );
+  }
+
+  Widget _signUpText(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 30.0,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            "Not a member?",
+            style: TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 12.0,
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) => const SignUpPage(),
+                ),
+              );
+            },
+            child: const Text(
+              "Register Now",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 12.0,
+                color: AppColors.primary,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -14,6 +15,10 @@ import 'package:flutter/foundation.dart'
 ///   options: DefaultFirebaseOptions.currentPlatform,
 /// );
 /// ```
+final googleApiKeyAndroid = dotenv.env['API_KEY_ANDROID'];
+final googleApiKeyWeb = dotenv.env['API_KEY_WEB'];
+final googleApiKeyWindows = dotenv.env['API_KEY_WINDOWS'];
+
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -46,8 +51,8 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBcwi3b0uyAI8sKqsbn9A_a4OdhtULmSoI',
+  static FirebaseOptions web = FirebaseOptions(
+    apiKey: googleApiKeyWeb as String,
     appId: '1:384205474942:web:3f07f8e4c30f4725739c2f',
     messagingSenderId: '384205474942',
     projectId: 'our-music90123',
@@ -55,16 +60,16 @@ class DefaultFirebaseOptions {
     storageBucket: 'our-music90123.appspot.com',
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCCQvUgYkNEWNQTgAZ9NpTLc8DyU310pQc',
+  static FirebaseOptions android = FirebaseOptions(
+    apiKey: googleApiKeyAndroid as String,
     appId: '1:384205474942:android:aae404327be4b6da739c2f',
     messagingSenderId: '384205474942',
     projectId: 'our-music90123',
     storageBucket: 'our-music90123.appspot.com',
   );
 
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBcwi3b0uyAI8sKqsbn9A_a4OdhtULmSoI',
+  static FirebaseOptions windows = FirebaseOptions(
+    apiKey: googleApiKeyWindows as String,
     appId: '1:384205474942:web:35eb39419be31b8d739c2f',
     messagingSenderId: '384205474942',
     projectId: 'our-music90123',

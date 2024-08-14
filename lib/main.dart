@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:our_music/core/configs/theme/app_theme.dart';
 import 'package:our_music/presentation/choose_theme/bloc/theme_cubit.dart';
@@ -18,6 +19,7 @@ Future<void> main() async {
         ? HydratedStorage.webStorageDirectory
         : await getApplicationDocumentsDirectory(),
   );
+  await dotenv.load(fileName: "api-key.env");
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

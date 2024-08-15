@@ -1,7 +1,10 @@
+import 'package:dartz/dartz.dart';
 import 'package:our_music/data/models/auth/create_user_req.dart';
 
-abstract class AuthRepository {
-  Future<void> signup(CreateUserReq createUserReq);
+import '../../../data/models/auth/sign_in_user_req.dart';
 
-  Future<void> signin();
+abstract class AuthRepository {
+  Future<Either> signup(CreateUserReq createUserReq);
+
+  Future<Either> signin(SignInUserReq signInUserReq);
 }

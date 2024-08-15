@@ -19,20 +19,23 @@ dependencies:
   get_it:
   flutter_dotenv:
 
-  rename_app:
-  change_app_package_name:
+  dartz:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
+  change_app_package_name:
+  rename_app:
   flutter_launcher_icons:
+
 flutter:
   uses-material-design: true
 
   assets:
     - .env
     - assets/images/
+    - assets/images/icons/
     - assets/fonts/
     - assets/vectors/
 

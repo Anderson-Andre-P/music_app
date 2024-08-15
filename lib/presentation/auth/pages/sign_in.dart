@@ -4,10 +4,18 @@ import 'package:our_music/common/widgets/appBar/app_bar.dart';
 import 'package:our_music/common/widgets/button/basic_app_button.dart';
 import 'package:our_music/core/configs/assets/app_vectors.dart';
 import 'package:our_music/core/configs/theme/app_colors.dart';
+import 'package:our_music/data/models/auth/sign_in_user_req.dart';
 import 'package:our_music/presentation/auth/pages/sign_up.dart';
 
+import '../../../domain/usecases/auth/sign_in.dart';
+import '../../../service_locator.dart';
+import '../../root/pages/root.dart';
+
 class SignInPage extends StatelessWidget {
-  const SignInPage({super.key});
+  SignInPage({super.key});
+
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,26 +33,57 @@ class SignInPage extends StatelessWidget {
             horizontal: 40.0,
             vertical: 60.0,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _registerText(),
-              const SizedBox(
-                height: 32.0,
-              ),
-              _emailField(context),
-              const SizedBox(
-                height: 32.0,
-              ),
-              _passwordField(context),
-              const SizedBox(
-                height: 32.0,
-              ),
-              BasicAppButton(
-                onPressed: () {},
-                title: "Enter",
-              )
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _registerText(),
+                const SizedBox(
+                  height: 32.0,
+                ),
+                _emailField(context),
+                const SizedBox(
+                  height: 32.0,
+                ),
+                _passwordField(context),
+                const SizedBox(
+                  height: 32.0,
+                ),
+                BasicAppButton(
+                  onPressed: () async {
+                    var result = await sl<SignInUseCase>().call(
+                      params: SignInUserReq(
+                        email: _email.text.toString(),
+                        password: _password.text.toString(),
+                      ),
+                    );
+                    result.fold(
+                      (l) {
+                        var snackbar = SnackBar(
+                          content: Text(l),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          snackbar,
+                        );
+                      },
+                      (r) {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (
+                              BuildContext context,
+                            ) =>
+                                const RootPage(),
+                          ),
+                          (route) => false,
+                        );
+                      },
+                    );
+                  },
+                  title: "Enter",
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -64,6 +103,7 @@ class SignInPage extends StatelessWidget {
 
   Widget _emailField(BuildContext context) {
     return TextField(
+      controller: _email,
       cursorColor: AppColors.primary,
       decoration: const InputDecoration(hintText: "Enter E-mail or Username")
           .applyDefaults(
@@ -74,6 +114,7 @@ class SignInPage extends StatelessWidget {
 
   Widget _passwordField(BuildContext context) {
     return TextField(
+      controller: _password,
       cursorColor: AppColors.primary,
       decoration: const InputDecoration(hintText: "Password").applyDefaults(
         Theme.of(context).inputDecorationTheme,
@@ -101,7 +142,7 @@ class SignInPage extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (BuildContext context) => const SignUpPage(),
+                  builder: (BuildContext context) => SignUpPage(),
                 ),
               );
             },

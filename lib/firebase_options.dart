@@ -51,25 +51,25 @@ class DefaultFirebaseOptions {
     apiKey: dotenv.get('API_KEY_WEB'),
     appId: dotenv.get('APP_ID_WEB'),
     messagingSenderId: '384205474942',
-    projectId: 'our-music90123',
-    authDomain: 'our-music90123.firebaseapp.com',
-    storageBucket: 'our-music90123.appspot.com',
+    projectId: 'our-music-f7b45',
+    authDomain: 'our-music-f7b45.firebaseapp.com',
+    storageBucket: 'our-music-f7b45.appspot.com',
   );
 
   static FirebaseOptions android = FirebaseOptions(
     apiKey: dotenv.get('API_KEY_ANDROID'),
     appId: dotenv.get('APP_ID_ANDROID'),
     messagingSenderId: '384205474942',
-    projectId: 'our-music90123',
-    storageBucket: 'our-music90123.appspot.com',
+    projectId: 'our-music-f7b45',
+    storageBucket: 'our-music-f7b45.appspot.com',
   );
 
   static FirebaseOptions windows = FirebaseOptions(
     apiKey: dotenv.get('API_KEY_WINDOWS'),
     appId: dotenv.get('APP_ID_WINDOWS'),
     messagingSenderId: '384205474942',
-    projectId: 'our-music90123',
-    authDomain: 'our-music90123.firebaseapp.com',
-    storageBucket: 'our-music90123.appspot.com',
+    projectId: 'our-music-f7b45',
+    authDomain: 'our-music-f7b45.firebaseapp.com',
+    storageBucket: 'our-music-f7b45.appspot.com',
   );
 }

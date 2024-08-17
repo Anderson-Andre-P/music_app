@@ -17,9 +17,9 @@ dependencies:
   firebase_core:
   firebase_auth:
   get_it:
-  flutter_dotenv:
 
   dartz:
+  cloud_firestore:
 
 dev_dependencies:
   flutter_test:
@@ -28,6 +28,7 @@ dev_dependencies:
   change_app_package_name:
   rename_app:
   flutter_launcher_icons:
+  flutter_dotenv:
 
 flutter:
   uses-material-design: true

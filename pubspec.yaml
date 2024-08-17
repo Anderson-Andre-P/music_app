@@ -11,15 +11,16 @@ dependencies:
     sdk: flutter
 
   flutter_svg:
+
   flutter_bloc:
   hydrated_bloc:
   path_provider:
-  firebase_core:
-  firebase_auth:
   get_it:
-
   dartz:
-  cloud_firestore:
+
+  firebase_core:
+  firebase_auth: ^5.1.4
+  cloud_firestore: ^5.2.1
 
 dev_dependencies:
   flutter_test:

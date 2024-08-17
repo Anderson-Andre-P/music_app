@@ -7,7 +7,7 @@ import 'package:our_music/core/configs/theme/app_colors.dart';
 import 'package:our_music/data/models/auth/create_user_req.dart';
 import 'package:our_music/domain/usecases/auth/sign_up.dart';
 import 'package:our_music/presentation/auth/pages/sign_in.dart';
-import 'package:our_music/presentation/root/pages/root.dart';
+import 'package:our_music/presentation/home/pages/home.dart';
 import 'package:our_music/service_locator.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -77,7 +77,7 @@ class SignUpPage extends StatelessWidget {
                           builder: (
                             BuildContext context,
                           ) =>
-                              const RootPage(),
+                              const HomePage(),
                         ),
                         (route) => false,
                       );

@@ -9,7 +9,7 @@ import 'package:our_music/presentation/auth/pages/sign_up.dart';
 
 import '../../../domain/usecases/auth/sign_in.dart';
 import '../../../service_locator.dart';
-import '../../root/pages/root.dart';
+import '../../home/pages/home.dart';
 
 class SignInPage extends StatelessWidget {
   SignInPage({super.key});
@@ -73,7 +73,7 @@ class SignInPage extends StatelessWidget {
                             builder: (
                               BuildContext context,
                             ) =>
-                                const RootPage(),
+                                const HomePage(),
                           ),
                           (route) => false,
                         );

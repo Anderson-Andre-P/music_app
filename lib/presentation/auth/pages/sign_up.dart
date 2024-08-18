@@ -7,6 +7,7 @@ import 'package:our_music/core/configs/theme/app_colors.dart';
 import 'package:our_music/data/models/auth/create_user_req.dart';
 import 'package:our_music/domain/usecases/auth/sign_up.dart';
 import 'package:our_music/presentation/auth/pages/sign_in.dart';
+import 'package:our_music/presentation/auth/pages/widgets/social_icons.dart';
 import 'package:our_music/presentation/home/pages/home.dart';
 import 'package:our_music/service_locator.dart';
 
@@ -85,7 +86,8 @@ class SignUpPage extends StatelessWidget {
                   );
                 },
                 title: "Create Account",
-              )
+              ),
+              const SocialIcons(),
             ],
           ),
         ),
@@ -108,9 +110,23 @@ class SignUpPage extends StatelessWidget {
     return TextField(
       controller: _fullName,
       cursorColor: AppColors.primary,
-      decoration: const InputDecoration(hintText: "Full Name").applyDefaults(
-        Theme.of(context).inputDecorationTheme,
-      ),
+      textInputAction: TextInputAction.next,
+      decoration: const InputDecoration(
+        hintText: "Full Name",
+        labelText: "Full Name",
+        labelStyle: TextStyle(
+          color: AppColors.primary,
+        ),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      )
+          .applyDefaults(
+            Theme.of(context).inputDecorationTheme,
+          )
+          .copyWith(
+            suffixIcon: const Icon(
+              Icons.person,
+            ),
+          ),
     );
   }
 
@@ -118,9 +134,23 @@ class SignUpPage extends StatelessWidget {
     return TextField(
       controller: _email,
       cursorColor: AppColors.primary,
-      decoration: const InputDecoration(hintText: "Enter E-mail").applyDefaults(
-        Theme.of(context).inputDecorationTheme,
-      ),
+      textInputAction: TextInputAction.next,
+      decoration: const InputDecoration(
+        hintText: "Enter E-mail",
+        labelText: "Email",
+        labelStyle: TextStyle(
+          color: AppColors.primary,
+        ),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      )
+          .applyDefaults(
+            Theme.of(context).inputDecorationTheme,
+          )
+          .copyWith(
+            suffixIcon: const Icon(
+              Icons.mail,
+            ),
+          ),
     );
   }
 
@@ -128,9 +158,24 @@ class SignUpPage extends StatelessWidget {
     return TextField(
       controller: _password,
       cursorColor: AppColors.primary,
-      decoration: const InputDecoration(hintText: "Password").applyDefaults(
-        Theme.of(context).inputDecorationTheme,
-      ),
+      textInputAction: TextInputAction.next,
+      obscureText: true,
+      decoration: const InputDecoration(
+        hintText: "Password",
+        labelText: "Password",
+        labelStyle: TextStyle(
+          color: AppColors.primary,
+        ),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      )
+          .applyDefaults(
+            Theme.of(context).inputDecorationTheme,
+          )
+          .copyWith(
+            suffixIcon: const Icon(
+              Icons.lock,
+            ),
+          ),
     );
   }
 

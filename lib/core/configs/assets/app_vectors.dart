@@ -14,4 +14,8 @@ class AppVectors {
   static const String onboardingImageOne = '${basePath}audio_player$format';
   static const String onboardingImageTwo = '${basePath}happy_music$format';
   static const String onboardingImageThree = '${basePath}mello$format';
+
+  static const String socialBrandFacebook = '${basePath}facebook_brand$format';
+  static const String socialBrandGoogle = '${basePath}google_brand$format';
+  static const String socialBrandX = '${basePath}x_brand$format';
 }

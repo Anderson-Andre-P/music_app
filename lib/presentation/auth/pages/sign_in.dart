@@ -10,6 +10,7 @@ import 'package:our_music/presentation/auth/pages/sign_up.dart';
 import '../../../domain/usecases/auth/sign_in.dart';
 import '../../../service_locator.dart';
 import '../../home/pages/home.dart';
+import 'widgets/social_icons.dart';
 
 class SignInPage extends StatelessWidget {
   SignInPage({super.key});
@@ -81,7 +82,8 @@ class SignInPage extends StatelessWidget {
                     );
                   },
                   title: "Enter",
-                )
+                ),
+                const SocialIcons(),
               ],
             ),
           ),
@@ -105,10 +107,24 @@ class SignInPage extends StatelessWidget {
     return TextField(
       controller: _email,
       cursorColor: AppColors.primary,
-      decoration: const InputDecoration(hintText: "Enter E-mail or Username")
+      textInputAction: TextInputAction.next,
+      obscureText: true,
+      decoration: const InputDecoration(
+        hintText: "Enter E-mail or Username",
+        labelText: "Email",
+        labelStyle: TextStyle(
+          color: AppColors.primary,
+        ),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      )
           .applyDefaults(
-        Theme.of(context).inputDecorationTheme,
-      ),
+            Theme.of(context).inputDecorationTheme,
+          )
+          .copyWith(
+            suffixIcon: const Icon(
+              Icons.mail,
+            ),
+          ),
     );
   }
 
@@ -116,9 +132,24 @@ class SignInPage extends StatelessWidget {
     return TextField(
       controller: _password,
       cursorColor: AppColors.primary,
-      decoration: const InputDecoration(hintText: "Password").applyDefaults(
-        Theme.of(context).inputDecorationTheme,
-      ),
+      textInputAction: TextInputAction.next,
+      obscureText: true,
+      decoration: const InputDecoration(
+        hintText: "Password",
+        labelText: "Password",
+        labelStyle: TextStyle(
+          color: AppColors.primary,
+        ),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      )
+          .applyDefaults(
+            Theme.of(context).inputDecorationTheme,
+          )
+          .copyWith(
+            suffixIcon: const Icon(
+              Icons.lock,
+            ),
+          ),
     );
   }
 

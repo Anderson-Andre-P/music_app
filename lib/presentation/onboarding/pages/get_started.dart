@@ -1,85 +1,151 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:our_music/core/configs/assets/app_images.dart';
+import 'package:our_music/core/configs/theme/app_colors.dart';
 
 import '../../../common/widgets/button/basic_app_button.dart';
 import '../../../core/configs/assets/app_vectors.dart';
 import '../../choose_theme/page/choose_theme.dart';
 
-class GetStartedPage extends StatelessWidget {
+class GetStartedPage extends StatefulWidget {
   const GetStartedPage({super.key});
 
   @override
+  State<GetStartedPage> createState() => _GetStartedPageState();
+}
+
+class _GetStartedPageState extends State<GetStartedPage> {
+  int currentPage = 0;
+  List<Map<String, String>> splashData = [
+    {
+      "text": "User friendly mp3 music player for your device!",
+      "vector": AppVectors.onboardingImageOne
+    },
+    {
+      "text": "We provide a better audio experien than others!",
+      "vector": AppVectors.onboardingImageTwo
+    },
+    {
+      "text":
+          "We show the easy way to hear musics. \nJust stay at home with us.",
+      "vector": AppVectors.onboardingImageThree
+    },
+  ];
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(
-                  AppImages.onboardingBG,
-                ),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Container(
-            color: Colors.black.withOpacity(0.35),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 52,
-              horizontal: 40,
-            ),
-            child: Column(
-              children: [
-                Align(
-                  alignment: Alignment.center,
-                  child: SvgPicture.asset(
-                    AppVectors.logo,
-                    width: 196.0,
-                  ),
-                ),
-                const Spacer(),
-                const Text(
-                  "User friendly mp3 music player for your device",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    fontSize: 32,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const Text(
-                  "We provide a better audio experien than others!",
-                  style: TextStyle(
-                    fontWeight: FontWeight.normal,
-                    color: Colors.white70,
-                    fontSize: 22,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                BasicAppButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            const ChooseThemePage(),
-                      ),
-                    );
+      body: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            children: [
+              Expanded(
+                flex: 3,
+                child: PageView.builder(
+                  onPageChanged: (value) {
+                    setState(() {
+                      currentPage = value;
+                    });
                   },
-                  title: "Get Started",
-                )
-              ],
-            ),
+                  itemCount: splashData.length,
+                  itemBuilder: (context, index) => SplashContent(
+                    vector: splashData[index]["vector"],
+                    text: splashData[index]['text'],
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    children: <Widget>[
+                      const Spacer(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(
+                          splashData.length,
+                          (index) => AnimatedContainer(
+                            duration: const Duration(milliseconds: 250),
+                            margin: const EdgeInsets.only(right: 5),
+                            height: 6,
+                            width: currentPage == index ? 20 : 6,
+                            decoration: BoxDecoration(
+                              color: currentPage == index
+                                  ? AppColors.primary
+                                  : AppColors.grey,
+                              borderRadius: BorderRadius.circular(3),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const Spacer(flex: 3),
+                      BasicAppButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  const ChooseThemePage(),
+                            ),
+                          );
+                        },
+                        title: "Get Started",
+                      ),
+                      const Spacer(),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
+    );
+  }
+}
+
+class SplashContent extends StatefulWidget {
+  const SplashContent({
+    super.key,
+    this.text,
+    this.vector,
+  });
+  final String? text, vector;
+
+  @override
+  State<SplashContent> createState() => _SplashContentState();
+}
+
+class _SplashContentState extends State<SplashContent> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        const Spacer(),
+        Align(
+          alignment: Alignment.center,
+          child: SvgPicture.asset(
+            AppVectors.logo,
+            width: 196.0,
+          ),
+        ),
+        Text(
+          widget.text!,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontWeight: FontWeight.normal,
+            fontSize: 16,
+          ),
+        ),
+        const Spacer(),
+        Align(
+          alignment: Alignment.center,
+          child: SvgPicture.asset(
+            widget.vector!,
+            height: 200,
+          ),
+        ),
+      ],
     );
   }
 }

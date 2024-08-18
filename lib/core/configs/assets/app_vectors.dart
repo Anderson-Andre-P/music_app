@@ -10,4 +10,8 @@ class AppVectors {
   static const String bottomPattern = '${basePath}bottom_pattern$format';
 
   static const String homeTopCard = '${basePath}home_top_card$format';
+
+  static const String onboardingImageOne = '${basePath}audio_player$format';
+  static const String onboardingImageTwo = '${basePath}happy_music$format';
+  static const String onboardingImageThree = '${basePath}mello$format';
 }

@@ -7,6 +7,16 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.lightBackground,
     brightness: Brightness.light,
     fontFamily: 'Satoshi',
+    snackBarTheme: const SnackBarThemeData(
+      backgroundColor: Colors.red,
+      actionTextColor: Colors.white,
+      contentTextStyle: TextStyle(
+        color: Colors.white,
+      ),
+      showCloseIcon: true,
+      closeIconColor: Colors.white,
+      dismissDirection: DismissDirection.horizontal,
+    ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: Colors.transparent,
@@ -59,6 +69,16 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.darkBackground,
     brightness: Brightness.dark,
     fontFamily: 'Satoshi',
+    snackBarTheme: const SnackBarThemeData(
+      backgroundColor: Colors.red,
+      actionTextColor: Colors.white,
+      contentTextStyle: TextStyle(
+        color: Colors.white,
+      ),
+      showCloseIcon: true,
+      closeIconColor: Colors.white,
+      dismissDirection: DismissDirection.horizontal,
+    ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: Colors.transparent,

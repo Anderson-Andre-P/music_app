@@ -63,6 +63,10 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
         message = 'The password provided is too weak';
       } else if (e.code == 'email-already-in-use') {
         message = 'An account already exists with the email';
+      } else if (e.code == 'channel-error') {
+        message = 'The request contains malformed or mismatching credentials.';
+      } else {
+        message = "${e.code} -- ERROR";
       }
 
       return Left(message);

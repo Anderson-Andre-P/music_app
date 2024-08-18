@@ -24,7 +24,7 @@ class SocalCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: context.isDarkMode
               ? AppColors.lightBackground
-              : AppColors.darkBackground,
+              : const Color(0xFFECEBE8),
           shape: BoxShape.circle,
         ),
         child: SvgPicture.asset(

@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:our_music/common/helpers/is_dark_theme.dart';
 import 'package:our_music/common/widgets/appBar/app_bar.dart';
 import 'package:our_music/common/widgets/button/basic_app_button.dart';
-import 'package:our_music/core/configs/assets/app_images.dart';
 import 'package:our_music/core/configs/assets/app_vectors.dart';
 import 'package:our_music/presentation/auth/pages/sign_in.dart';
 import 'package:our_music/presentation/auth/pages/sign_up.dart';
@@ -30,16 +29,6 @@ class SigninOrSignupPage extends StatelessWidget {
               alignment: Alignment.bottomRight,
               child: SvgPicture.asset(
                 AppVectors.bottomPattern,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: Image.asset(
-                AppImages.authBG,
-                width: 136.0,
               ),
             ),
           ),
@@ -82,45 +71,33 @@ class SigninOrSignupPage extends StatelessWidget {
                   const SizedBox(
                     height: 32.0,
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: BasicAppButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) => SignUpPage(),
-                              ),
-                            );
-                          },
-                          title: "Register",
+                  BasicAppButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => SignInPage(),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 16.0,
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: BasicAppButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) => SignInPage(),
-                              ),
-                            );
-                          },
-                          title: "Sign In",
-                          textColor:
-                              context.isDarkMode ? Colors.white : Colors.black,
-                          backgroundColor: context.isDarkMode
-                              ? Colors.white10
-                              : Colors.white70,
+                      );
+                    },
+                    title: "Sign In",
+                    textColor: context.isDarkMode ? Colors.white : Colors.black,
+                    backgroundColor:
+                        context.isDarkMode ? Colors.white10 : Colors.white70,
+                  ),
+                  const SizedBox(
+                    height: 16.0,
+                  ),
+                  BasicAppButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => SignUpPage(),
                         ),
-                      ),
-                    ],
+                      );
+                    },
+                    title: "Register",
                   ),
                 ],
               ),

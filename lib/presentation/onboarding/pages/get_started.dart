@@ -25,8 +25,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
       "vector": AppVectors.onboardingImageTwo
     },
     {
-      "text":
-          "We show the easy way to hear musics. \nJust stay at home with us.",
+      "text": "We show the easy way to hear musics. Just stay at home with us.",
       "vector": AppVectors.onboardingImageThree
     },
   ];
@@ -129,12 +128,20 @@ class _SplashContentState extends State<SplashContent> {
             width: 196.0,
           ),
         ),
-        Text(
-          widget.text!,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontWeight: FontWeight.normal,
-            fontSize: 16,
+        const SizedBox(
+          height: 24.0,
+        ),
+        Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 80,
+          ),
+          child: Text(
+            widget.text!,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 20,
+            ),
           ),
         ),
         const Spacer(),

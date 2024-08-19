@@ -5,6 +5,7 @@ import 'package:our_music/common/helpers/is_dark_theme.dart';
 import 'package:our_music/common/widgets/appBar/app_bar.dart';
 import 'package:our_music/common/widgets/button/basic_app_button.dart';
 import 'package:our_music/core/configs/assets/app_vectors.dart';
+import 'package:our_music/core/configs/theme/app_colors.dart';
 import 'package:our_music/presentation/auth/pages/sign_in.dart';
 import 'package:our_music/presentation/auth/pages/sign_up.dart';
 
@@ -81,9 +82,10 @@ class SigninOrSignupPage extends StatelessWidget {
                       );
                     },
                     title: "Sign In",
-                    textColor: context.isDarkMode ? Colors.white : Colors.black,
-                    backgroundColor:
-                        context.isDarkMode ? Colors.white10 : Colors.white70,
+                    textColor: context.isDarkMode ? Colors.black : Colors.black,
+                    backgroundColor: context.isDarkMode
+                        ? AppColors.lightBackground
+                        : Colors.black12,
                   ),
                   const SizedBox(
                     height: 16.0,

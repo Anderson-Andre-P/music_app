@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,30 +5,47 @@ import 'package:our_music/core/configs/theme/app_colors.dart';
 import 'package:our_music/presentation/auth/pages/signin_or_signup.dart';
 
 import '../../../common/widgets/button/basic_app_button.dart';
-import '../../../core/configs/assets/app_images.dart';
 import '../../../core/configs/assets/app_vectors.dart';
 import '../bloc/theme_cubit.dart';
 
-class ChooseThemePage extends StatelessWidget {
+class ChooseThemePage extends StatefulWidget {
   const ChooseThemePage({super.key});
+
+  @override
+  State<ChooseThemePage> createState() => _ChooseThemePageState();
+}
+
+class _ChooseThemePageState extends State<ChooseThemePage> {
+  bool isDarkMode = false;
+
+  void _toggleTheme(bool value) {
+    setState(() {
+      isDarkMode = value;
+    });
+    if (isDarkMode) {
+      context.read<ThemeCubit>().updateTheme(ThemeMode.dark);
+    } else {
+      context.read<ThemeCubit>().updateTheme(ThemeMode.light);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(
-                  AppImages.chooseThemeBG,
-                ),
-                fit: BoxFit.cover,
+          Padding(
+            padding: const EdgeInsets.only(top: 240.0),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: SvgPicture.asset(
+                isDarkMode ? AppVectors.darkMode : AppVectors.lightMode,
+                width: 196.0,
               ),
             ),
           ),
           Container(
-            color: Colors.black.withOpacity(0.35),
+            color: isDarkMode ? Colors.black.withOpacity(0.35) : null,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
@@ -47,20 +62,20 @@ class ChooseThemePage extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                const Text(
+                Text(
                   "Choice the theme off our Music App",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: isDarkMode ? Colors.white : AppColors.darkGrey,
                     fontSize: 32,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const Text(
+                Text(
                   "Select an theme to personalize your experience...",
                   style: TextStyle(
                     fontWeight: FontWeight.normal,
-                    color: Colors.white70,
+                    color: isDarkMode ? Colors.white70 : AppColors.darkGrey,
                     fontSize: 22,
                   ),
                   textAlign: TextAlign.center,
@@ -68,93 +83,24 @@ class ChooseThemePage extends StatelessWidget {
                 const SizedBox(
                   height: 52,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            context
-                                .read<ThemeCubit>()
-                                .updateTheme(ThemeMode.light);
-                          },
-                          child: ClipOval(
-                            child: BackdropFilter(
-                              filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
-                              child: Container(
-                                height: 96.0,
-                                width: 96.0,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.white30,
-                                ),
-                                child: SvgPicture.asset(
-                                  AppVectors.sun,
-                                  fit: BoxFit.none,
-                                ),
-                              ),
-                            ),
+                Switch(
+                  value: isDarkMode,
+                  onChanged: _toggleTheme,
+                  activeColor: Colors.white,
+                  activeTrackColor: AppColors.primary,
+                  inactiveThumbColor: AppColors.primary,
+                  inactiveTrackColor: Colors.white,
+                  thumbIcon: WidgetStatePropertyAll(
+                    isDarkMode
+                        ? const Icon(
+                            Icons.dark_mode,
+                            color: AppColors.primary,
+                          )
+                        : const Icon(
+                            Icons.light_mode,
+                            color: Colors.white,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        const Text(
-                          "Light Mode",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w300,
-                            fontSize: 16,
-                            color: AppColors.grey,
-                          ),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 24,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            context
-                                .read<ThemeCubit>()
-                                .updateTheme(ThemeMode.dark);
-                          },
-                          child: ClipOval(
-                            child: BackdropFilter(
-                              filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
-                              child: Container(
-                                height: 96.0,
-                                width: 96.0,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.white30,
-                                ),
-                                child: SvgPicture.asset(
-                                  AppVectors.moon,
-                                  fit: BoxFit.none,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        const Text(
-                          "Dark Mode",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w300,
-                            fontSize: 16,
-                            color: AppColors.grey,
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
+                  ),
                 ),
                 const SizedBox(
                   height: 52,

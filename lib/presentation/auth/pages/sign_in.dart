@@ -108,7 +108,7 @@ class SignInPage extends StatelessWidget {
       controller: _email,
       cursorColor: AppColors.primary,
       textInputAction: TextInputAction.next,
-      obscureText: true,
+      obscureText: false,
       decoration: const InputDecoration(
         hintText: "Enter E-mail or Username",
         labelText: "Email",

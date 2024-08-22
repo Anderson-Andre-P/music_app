@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:our_music/common/helpers/is_dark_theme.dart';
 import 'package:our_music/core/configs/theme/app_colors.dart';
+import 'package:our_music/presentation/song_player/pages/song_player.dart';
 
 import '../../../core/configs/constants/app_constants.dart';
 import '../../../domain/entities/song/song.dart';
@@ -45,7 +46,16 @@ class NewsSongs extends StatelessWidget {
       shrinkWrap: true,
       itemBuilder: (context, index) {
         return GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => SongPlayerPage(
+                  songEntity: songs[index],
+                ),
+              ),
+            );
+          },
           child: SizedBox(
             width: 160,
             child: Column(

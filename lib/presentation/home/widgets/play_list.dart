@@ -5,6 +5,7 @@ import 'package:our_music/core/configs/theme/app_colors.dart';
 import 'package:our_music/presentation/home/bloc/play_list_state.dart';
 
 import '../../../domain/entities/song/song.dart';
+import '../../song_player/pages/song_player.dart';
 import '../bloc/play_list_cubit.dart';
 
 class PlayList extends StatelessWidget {
@@ -72,7 +73,16 @@ class PlayList extends StatelessWidget {
       shrinkWrap: true,
       itemBuilder: (context, index) {
         return GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => SongPlayerPage(
+                  songEntity: songs[index],
+                ),
+              ),
+            );
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -128,7 +138,8 @@ class PlayList extends StatelessWidget {
                   IconButton(
                     onPressed: () {},
                     icon: const Icon(
-                      Icons.favorite,
+                      Icons.favorite_outline,
+                      size: 24,
                     ),
                   ),
                 ],

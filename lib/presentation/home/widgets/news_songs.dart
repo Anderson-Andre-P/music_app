@@ -25,7 +25,7 @@ class NewsSongs extends StatelessWidget {
                 return Container(
                   alignment: Alignment.center,
                   child: Shimmer.fromColors(
-                    baseColor: Colors.red,
+                    baseColor: AppColors.primary,
                     highlightColor: Colors.yellow,
                     child: ListView.builder(
                       itemCount: 1,

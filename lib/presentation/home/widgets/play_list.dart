@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:our_music/common/helpers/is_dark_theme.dart';
 import 'package:our_music/core/configs/theme/app_colors.dart';
 import 'package:our_music/presentation/home/bloc/play_list_state.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../common/widgets/favorite_button/favorite_button.dart';
 import '../../../domain/entities/song/song.dart';
@@ -21,8 +22,74 @@ class PlayList extends StatelessWidget {
           if (state is PlayListLoading) {
             return Container(
               alignment: Alignment.center,
-              child: const CircularProgressIndicator(
-                color: AppColors.primary,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 24,
+              ),
+              child: Shimmer.fromColors(
+                baseColor: AppColors.primary,
+                highlightColor: Colors.yellow,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.only(
+                        bottom: 12.0,
+                        right: index == 4 ? 16.0 : 0.0,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                height: 45,
+                                width: 45,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(width: 12),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 150,
+                                    height: 16,
+                                    color: Colors.white,
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Container(
+                                    width: 100,
+                                    height: 11,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                width: 30,
+                                height: 16,
+                                color: Colors.white,
+                              ),
+                              const SizedBox(width: 20),
+                              Container(
+                                width: 20,
+                                height: 20,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
             );
           }

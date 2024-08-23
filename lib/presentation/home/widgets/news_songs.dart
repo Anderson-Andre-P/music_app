@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:our_music/common/helpers/is_dark_theme.dart';
 import 'package:our_music/core/configs/theme/app_colors.dart';
 import 'package:our_music/presentation/song_player/pages/song_player.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../../core/configs/constants/app_constants.dart';
 import '../../../domain/entities/song/song.dart';
@@ -23,8 +24,59 @@ class NewsSongs extends StatelessWidget {
               if (state is NewsSongsLoading) {
                 return Container(
                   alignment: Alignment.center,
-                  child: const CircularProgressIndicator(
-                    color: AppColors.primary,
+                  child: Shimmer.fromColors(
+                    baseColor: Colors.red,
+                    highlightColor: Colors.yellow,
+                    child: ListView.builder(
+                      itemCount: 1,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: List.generate(4, (index) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                left: 16.0,
+                                right: index == 3 ? 16.0 : 0.0,
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 164,
+                                    height: 200,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 16),
+                                  Container(
+                                    width: 100,
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(6.0),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 8),
+                                  Container(
+                                    width: 60,
+                                    height: 14,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(4.0),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }),
+                        );
+                      },
+                    ),
                   ),
                 );
               }

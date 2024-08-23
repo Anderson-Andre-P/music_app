@@ -24,6 +24,8 @@ dependencies:
 
   just_audio:
 
+  shimmer:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -4,6 +4,7 @@ import 'package:our_music/common/helpers/is_dark_theme.dart';
 import 'package:our_music/core/configs/assets/app_images.dart';
 import 'package:our_music/core/configs/theme/app_colors.dart';
 import 'package:our_music/presentation/home/widgets/play_list.dart';
+import 'package:our_music/presentation/profile/pages/profile.dart';
 
 import '../../../common/widgets/appBar/app_bar.dart';
 import '../../../core/configs/assets/app_vectors.dart';
@@ -31,6 +32,19 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       appBar: BasicAppBar(
         hideBackButton: true,
+        action: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => const ProfilePage(),
+              ),
+            );
+          },
+          icon: const Icon(
+            Icons.person,
+          ),
+        ),
         title: SvgPicture.asset(
           AppVectors.logo,
           width: 148.0,

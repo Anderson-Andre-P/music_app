@@ -8,8 +8,10 @@ import 'package:our_music/domain/repository/song/song.dart';
 import 'package:our_music/domain/usecases/auth/sign_up.dart';
 import 'package:our_music/domain/usecases/song/get_new_song_use_case.dart';
 
+import 'domain/usecases/auth/get_user.dart';
 import 'domain/usecases/auth/sign_in.dart';
 import 'domain/usecases/song/add_or_remove_favorite_song.dart';
+import 'domain/usecases/song/get_favorite_songs.dart';
 import 'domain/usecases/song/get_play_list_use_case.dart';
 import 'domain/usecases/song/is_favorite_song.dart';
 
@@ -52,4 +54,8 @@ Future<void> initializeDependencies() async {
       AddOrRemoveFavoriteSongUseCase());
 
   sl.registerSingleton<IsFavoriteSongUseCase>(IsFavoriteSongUseCase());
+
+  sl.registerSingleton<GetUserUseCase>(GetUserUseCase());
+
+  sl.registerSingleton<GetFavoriteSongsUseCase>(GetFavoriteSongsUseCase());
 }

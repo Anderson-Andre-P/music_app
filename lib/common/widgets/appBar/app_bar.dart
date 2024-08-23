@@ -4,18 +4,20 @@ import 'package:our_music/common/helpers/is_dark_theme.dart';
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? title;
   final Widget? action;
+  final Color? backgroundColor;
   final bool hideBackButton;
   const BasicAppBar({
     super.key,
     this.title,
     this.hideBackButton = false,
     this.action,
+    this.backgroundColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: backgroundColor ?? Colors.transparent,
       elevation: 0,
       centerTitle: true,
       title: title ?? const Text(""),

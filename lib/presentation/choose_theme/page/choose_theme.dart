@@ -16,7 +16,7 @@ class ChooseThemePage extends StatefulWidget {
 }
 
 class _ChooseThemePageState extends State<ChooseThemePage> {
-  bool isDarkMode = false;
+  bool isDarkMode = true;
 
   void _toggleTheme(bool value) {
     setState(() {

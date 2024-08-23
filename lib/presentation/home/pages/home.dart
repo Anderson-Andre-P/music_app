@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:our_music/common/helpers/is_dark_theme.dart';
 import 'package:our_music/core/configs/assets/app_images.dart';
 import 'package:our_music/core/configs/theme/app_colors.dart';
+import 'package:our_music/presentation/home/widgets/all_artists.dart';
 import 'package:our_music/presentation/home/widgets/play_list.dart';
 import 'package:our_music/presentation/profile/pages/profile.dart';
 
@@ -24,7 +25,7 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -54,17 +55,17 @@ class _HomePageState extends State<HomePage>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _homeCard(),
+            // _homeCard(),
             _tabs(),
             SizedBox(
               height: 260.0,
               child: TabBarView(
                 controller: _tabController,
-                children: [
-                  const NewsSongs(),
-                  Container(),
-                  Container(),
-                  Container(),
+                children: const [
+                  NewsSongs(),
+                  AllArtists(),
+                  //   Container(),
+                  //   Container(),
                 ],
               ),
             ),
@@ -124,16 +125,7 @@ class _HomePageState extends State<HomePage>
       tabs: const [
         Tab(
           child: Text(
-            "News",
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 16,
-            ),
-          ),
-        ),
-        Tab(
-          child: Text(
-            "Videos",
+            "Suggested",
             style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 16,
@@ -149,15 +141,24 @@ class _HomePageState extends State<HomePage>
             ),
           ),
         ),
-        Tab(
-          child: Text(
-            "Podcasts",
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 16,
-            ),
-          ),
-        ),
+        // Tab(
+        //   child: Text(
+        //     "Songs",
+        //     style: TextStyle(
+        //       fontWeight: FontWeight.w500,
+        //       fontSize: 16,
+        //     ),
+        //   ),
+        // ),
+        // Tab(
+        //   child: Text(
+        //     "Albums",
+        //     style: TextStyle(
+        //       fontWeight: FontWeight.w500,
+        //       fontSize: 16,
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }

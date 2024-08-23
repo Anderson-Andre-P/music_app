@@ -4,6 +4,7 @@ import 'package:our_music/common/helpers/is_dark_theme.dart';
 import 'package:our_music/core/configs/theme/app_colors.dart';
 import 'package:our_music/presentation/home/bloc/play_list_state.dart';
 
+import '../../../common/widgets/favorite_button/favorite_button.dart';
 import '../../../domain/entities/song/song.dart';
 import '../../song_player/pages/song_player.dart';
 import '../bloc/play_list_cubit.dart';
@@ -135,12 +136,8 @@ class PlayList extends StatelessWidget {
                   const SizedBox(
                     width: 20,
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.favorite_outline,
-                      size: 24,
-                    ),
+                  FavoriteButton(
+                    songEntity: songs[index],
                   ),
                 ],
               )

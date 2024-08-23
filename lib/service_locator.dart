@@ -9,7 +9,9 @@ import 'package:our_music/domain/usecases/auth/sign_up.dart';
 import 'package:our_music/domain/usecases/song/get_new_song_use_case.dart';
 
 import 'domain/usecases/auth/sign_in.dart';
+import 'domain/usecases/song/add_or_remove_favorite_song.dart';
 import 'domain/usecases/song/get_play_list_use_case.dart';
+import 'domain/usecases/song/is_favorite_song.dart';
 
 final sl = GetIt.instance;
 
@@ -45,4 +47,9 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<GetPlayListUseCase>(
     GetPlayListUseCase(),
   );
+
+  sl.registerSingleton<AddOrRemoveFavoriteSongUseCase>(
+      AddOrRemoveFavoriteSongUseCase());
+
+  sl.registerSingleton<IsFavoriteSongUseCase>(IsFavoriteSongUseCase());
 }

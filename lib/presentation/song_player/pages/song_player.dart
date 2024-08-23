@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:our_music/common/widgets/appBar/app_bar.dart';
 import 'package:our_music/domain/entities/song/song.dart';
 
+import '../../../common/widgets/favorite_button/favorite_button.dart';
 import '../../../core/configs/constants/app_constants.dart';
 import '../../../core/configs/theme/app_colors.dart';
 import '../bloc/song_player_cubit.dart';
@@ -102,14 +103,9 @@ class SongPlayerPage extends StatelessWidget {
             ),
           ],
         ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.favorite_outline,
-            size: 32,
-          ),
+        FavoriteButton(
+          songEntity: songEntity,
         ),
-        // FavoriteButton(songEntity: songEntity)
       ],
     );
   }
